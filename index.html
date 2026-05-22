@@ -7,11 +7,13 @@
     <title>bootstrap</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
-    <h1 id="heading" style="color: red;">Student Management Dashboard</h1>
-    <button class="btn btn-primary">Add Student</button>
+    <h1 style="color: red;">Student Management Dashboard</h1>
+    <button id="Addstudent" type="submit" onclick="addstudent()" class="btn btn-primary">Add student</button>
     <table class="table table-hover">
         <thead class="table table-dark table-hover">
             <tr>
@@ -19,6 +21,7 @@
                 <th>Student Id</th>
                 <th>Status</th>
                 <th>Action</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody class="table table-success">
@@ -26,27 +29,71 @@
                 <td>Mujahid</td>
                 <td>1701142</td>
                 <td><span class="badge bg-success">Active 1st</span></td>
-                <td><button class="btn btn-danger">Delete</button></td>
+                <td><button id="deletestudent" type="submit" onclick="deletestudent"
+                        class="btn btn-danger">Delete</button></td>
+                <td><button type="submit" onclick="Edit" class="btn btn-primary" id="Editstudent">Edit</button></td>
             </tr>
             <tr class="bg-success">
                 <td>Ahmed Nawaz</td>
                 <td>1701140</td>
                 <td><span class="badge bg-success text-hover">Active 2nd</span></td>
-                <td><button class="btn btn-danger">Delete</button></td>
+                <td><button id="deletestudent" type="submit" onclick="deletestudent"
+                        class="btn btn-danger">Delete</button></td>
+                <td><button type="submit" onclick="Edit" class="btn btn-primary" id="Editstudent">Edit</button></td>
             </tr>
             <tr>
                 <td>Shayan Raza</td>
                 <td>1701139</td>
                 <td><span class="badge bg-danger">Inactive 1st</span></td>
-                <td><button class="btn btn-danger">Delete</button></td>
+                <td><button id="deletestudent" type="submit" onclick="deletestudent"
+                        class="btn btn-danger">Delete</button></td>
+                <td><button type="submit" onclick="Edit" class="btn btn-primary" id="Editstudent">Edit</button></td>
             </tr>
             <tr>
                 <td>Raza Mehdi</td>
                 <td>1701138</td>
                 <td><span class="badge bg-warning">Absent 1st</span></td>
-                <td><button class="btn btn-danger">Delete</button></td>
+                <td><button id="deletestudent" type="submit" onclick="deletestudent"
+                        class="btn btn-danger">Delete</button></td>
+                <td><button type="submit" onclick="Edit" class="btn btn-primary" id="Editstudent">Edit</button></td>
             </tr>
         </tbody>
+    </table>
+    <script>
+        $(document).ready(function name() {
+            $("h1").click(function name() {
+                $(this).css("color", "blue");
+            });
+        });
+        $(document).ready(function name() {
+            $("button").click(function name() {
+                $(this).closest("tr").remove();
+
+            });
+
+        });
+        $(document).ready(function () {
+            $("#Addstudent").click(function () {
+                let name = prompt("Enter Student Name");
+                let id = prompt("Enter Student Id");
+                let status = prompt("Enter Student Status");
+                let newrow = `<tr>
+                    <td>${name}</td>
+                    <td>${id}</td>
+                    <td><span class="badge bg-success">${status}</span></td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                    <td><button class="btn btn-primary">Edit</button></td>
+                    </tr>`;
+                $("table tbody").append(newrow);
+            });
+
+        });
+        $(document).on("click", ".btn-danger", function () {
+            $(this).closest("tr").remove();
+        });
+        $(document).on("click",".btn-primary")
+
+    </script>
 </body>
 
 </html>
